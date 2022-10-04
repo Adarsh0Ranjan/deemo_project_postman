@@ -11,6 +11,7 @@ struct ContentView: View {
     @State var userPhNumnber = ""
     @State var responseCode = 0
     @State var otp = ""
+    @State var token = ""
     var body: some View {
         List{
             TextField("Enter phone number", text: $userPhNumnber)
@@ -26,9 +27,17 @@ struct ContentView: View {
                 }label: {
                     Text("Verify")
                 }
+                TextField("put token ",text: $token)
+                Button{
+                    getWorkerInfo(Token: token)
+                }label: {
+                    Text("get worker info")
+                }
             }
-            
+        
+
         }
+        
     }
     func getOtp(number: String){
         struct UploadData: Codable {
@@ -38,7 +47,7 @@ struct ContentView: View {
                     print("Error: cannot create URL")
                     return
         }
-        let uploadDataModel = UploadData(phoneNumber: number.self)
+        let uploadDataModel = UploadData(phoneNumber: number)
         guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
                     print("Error: Trying to convert model to JSON data")
                     return
@@ -80,7 +89,7 @@ struct ContentView: View {
                 
             }
             // Add data to the model
-        let uploadDataModel = UploadData(phoneNumber: number.self, code: otp.self)
+        let uploadDataModel = UploadData(phoneNumber: number, code: otp)
             // Convert model to JSON data
             guard let jsonData = try? JSONEncoder().encode(uploadDataModel) else {
                 print("Error: Trying to convert model to JSON data")
@@ -125,7 +134,52 @@ struct ContentView: View {
                     return
                 }
             }.resume()
+    }
+    func getWorkerInfo(Token: String) {
+        guard let url = URL(string: "https://api-v2-dev.eyrus.com/v2/users/me/worker_profile") else {
+            print("Error: cannot create URL")
+            return
         }
+        // Create the url request
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let acessToken = Token
+        request.setValue("Bearer \(acessToken)",
+                         forHTTPHeaderField: "Authorization")
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print("Error: error calling GET")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            guard let response = response as? HTTPURLResponse, (200 ..< 299) ~= response.statusCode else {
+                print("Error: HTTP request failed")
+                return
+            }
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Could print JSON in String")
+                    return
+                }
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
+            }
+        }.resume()
+    }
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

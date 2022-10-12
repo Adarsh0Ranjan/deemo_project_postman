@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		412E725028F65A4B00DC1803 /* PrettyJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E724F28F65A4B00DC1803 /* PrettyJson.swift */; };
+		412E725428F69A9500DC1803 /* RefreshTokenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412E725328F69A9500DC1803 /* RefreshTokenView.swift */; };
+		4147BAEE28F42C9D00AEE606 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4147BAED28F42C9D00AEE606 /* SheetView.swift */; };
 		41D7CE4A28E6AC2200AF531C /* postman_demo_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7CE4928E6AC2200AF531C /* postman_demo_AppApp.swift */; };
 		41D7CE4C28E6AC2200AF531C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D7CE4B28E6AC2200AF531C /* ContentView.swift */; };
 		41D7CE4E28E6AC2300AF531C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41D7CE4D28E6AC2300AF531C /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		412E724F28F65A4B00DC1803 /* PrettyJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrettyJson.swift; sourceTree = "<group>"; };
+		412E725328F69A9500DC1803 /* RefreshTokenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenView.swift; sourceTree = "<group>"; };
+		4147BAED28F42C9D00AEE606 /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
 		41D7CE4628E6AC2200AF531C /* postman_demo_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = postman_demo_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41D7CE4928E6AC2200AF531C /* postman_demo_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postman_demo_AppApp.swift; sourceTree = "<group>"; };
 		41D7CE4B28E6AC2200AF531C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +59,9 @@
 			children = (
 				41D7CE4928E6AC2200AF531C /* postman_demo_AppApp.swift */,
 				41D7CE4B28E6AC2200AF531C /* ContentView.swift */,
+				412E724F28F65A4B00DC1803 /* PrettyJson.swift */,
+				4147BAED28F42C9D00AEE606 /* SheetView.swift */,
+				412E725328F69A9500DC1803 /* RefreshTokenView.swift */,
 				41D7CE4D28E6AC2300AF531C /* Assets.xcassets */,
 				41D7CE4F28E6AC2300AF531C /* Preview Content */,
 			);
@@ -138,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				41D7CE4C28E6AC2200AF531C /* ContentView.swift in Sources */,
+				412E725028F65A4B00DC1803 /* PrettyJson.swift in Sources */,
+				4147BAEE28F42C9D00AEE606 /* SheetView.swift in Sources */,
 				41D7CE4A28E6AC2200AF531C /* postman_demo_AppApp.swift in Sources */,
+				412E725428F69A9500DC1803 /* RefreshTokenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
